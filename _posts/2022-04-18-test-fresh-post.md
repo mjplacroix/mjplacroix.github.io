@@ -10,17 +10,14 @@ Increasing visibility to decrease risk. Applying Machine Learning to geographica
 <!--more-->
 # Global API manufacturing capacity is concentrated in India​ (the money slide)
 
-{% include image.html url="/img/map.PNG"%}
 
 Heat map of API facilities approved by US, EU, Japan, Korea and NZ. Each unit either a product-facility-approval country combination or lower level of resolution (depending on granularity of the data). Hoverable details for each country like XXX US DMFs, YYY EU CEPs etc. This is the money slide
 
 # India dominates in API registration filings to stringent regulatory authorities 
 
-{% include image.html url="/img/foreign_reg.PNG"%}
 
 # Facilities in India tend to have broader capabilities whereas Chinese firms are more specialized
 
-{% include image.html url="/img/firm_size.png"%}
 
 # US API registrations from European and the US manufacturers have declined over time
 <div id="dmf_area2" style="width: 900px; height: 500px"></div>
