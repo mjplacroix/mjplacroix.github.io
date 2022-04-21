@@ -1,9 +1,20 @@
 ---
 layout: post
 title: Have OAI Records Increased Over the Past Yeaer?
-subtitle:
-bigimg: 
+subtitle: Need one?
+date: 2022-04-21 
+author: Michael LaCroix 
 tags: [data science, kedro]
+---
+
+---
+layout: post
+title: Test markdown
+subtitle: Each post also has a subtitle
+gh-repo: daattali/beautiful-jekyll
+gh-badge: [star, fork, follow]
+tags: [test]
+comments: true
 ---
 
 COVID has affected nearly every part of our lives - personal, work, and beyond. Despite the well known mailman's creed of "Neither snow nor rain nor heat nor gloom of night...", government was no expection to this. We can see this clearly in the collection of data on FDA inspections over the past decade. In the macro - we can see total inspections holding steady between roughly 20-25,0000 from 2010 to 2019. Then, to no one's surprise, we see a steep drop by over 50% in 2020 to 9,638 and still further in 2021 to 7,689. You can see this overall trend clearly below.
