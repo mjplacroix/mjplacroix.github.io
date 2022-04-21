@@ -48,6 +48,7 @@ It gets interesting when we zoom in into the types of inspections and the ratios
     }
 </script>
 
+# Inserting space
 
 
 It will be interesting to see where it goes from here as the sheer overall number of inspections has started to pick up again. We're only nearing the end of Q1 and already approaching 50% of the inspections for 2021. In fact, if we zoom in again on month-by-month inspection totals from the last 2 years, we can clearly see the number of overall inspections increasing. Which, thankfully, seems to be another indication that we're trending towards a return to normalcy.
