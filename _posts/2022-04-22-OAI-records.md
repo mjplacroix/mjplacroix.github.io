@@ -14,6 +14,7 @@ COVID has affected nearly every part of our lives - personal, work, and beyond. 
 It gets interesting when we zoom in into the types of inspections and the ratios in which they occurred. Here, I want to specifically look at the ratio of Official Action Indicated (OAI) inspections. As a ratio or percent of the total inspections by year, we see a steady rise from 2009 to 2013, a steady decrease from here to 2018, and the beginning of another uptick which actually continued well into COVID with a continued rise in OAI inspections (as a percentage) from 2019-2020 (2.9% -> 3.1%) and 2020-2021 (3.1% -> 3.7%).
 
 <div id="inspections"></div>
+
 <script>
 async function getJSON(filename) {
   const response = await fetch(filename)
@@ -73,6 +74,7 @@ It will be interesting to see where it goes from here as the sheer overall numbe
 Over 80% of API antiviral manufacturing sites that support US markets are located in India and China. <br>
 
 Analgesics have the highest portion of DMFs sourced in the US at 25%.
+
 
 <div id="aggro" style="width: 900px; height: 500px"></div>
 <script
