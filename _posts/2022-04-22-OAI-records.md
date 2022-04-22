@@ -66,3 +66,78 @@ function drawChart(rawData) {
 It will be interesting to see where it goes from here as the sheer overall number of inspections has started to pick up again. We're only nearing the end of Q1 and already approaching 50% of the inspections for 2021. In fact, if we zoom in again on month-by-month inspection totals from the last 2 years, we can clearly see the number of overall inspections increasing. Which, thankfully, seems to be another indication that we're trending towards a return to normalcy.
 
 *NOTE:* Why data only shows through 2021 - we're using fiscal year as a proxy since the date of completion is actually a lagging indicator
+
+<!--more-->
+# Therapeutic class analysis
+
+Over 80% of API antiviral manufacturing sites that support US markets are located in India and China. <br>
+
+Analgesics have the highest portion of DMFs sourced in the US at 25%.
+
+<div id="class_drug" style="width: 900px; height: 500px"></div>
+<div id="aggro" style="width: 900px; height: 500px"></div>
+<script
+  type="text/javascript"
+  src="https://www.gstatic.com/charts/loader.js"
+></script>
+
+<script>
+async function getJSON(filename) {
+  const response = await fetch(filename)
+  return response.json()
+}
+
+google.charts.load('current', {
+  'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(loadAndDrawChart);
+google.charts.setOnLoadCallback(loadAndDrawChart2);
+
+function loadAndDrawChart() {
+  getJSON("../assets/geographic_class_analysis.json")
+  .then(drawChart)
+}
+function loadAndDrawChart2() {
+  getJSON("../assets/class_antivirals.json")
+  .then(drawChart2)
+}
+
+
+
+function drawChart(rawData) {
+  
+  var data = google.visualization.arrayToDataTable([
+    ['therapeutic_class', {label: 'India', type: 'number'}, {label: 'China', type: 'number'}, {label: 'United States', type: 'number'}, {label: 'Other', type: 'number'}],
+    ...rawData.map(
+      ({therapeutic_class, India, China, US, Other}) => {
+        return [therapeutic_class, India, China, US, Other]
+      }
+    )
+  ]);
+  
+  var options = {
+    title: "Geographic by therapeutic class",
+    legend: { position: 'bottom', maxLines: 3 },
+    hAxis: {
+      title: 'Portion of Active Type II API DMFs', 
+      titleTextStyle: {italic: false}
+    },
+    annotations: {
+      textStyle: {
+        color: 'black',
+      },
+    },
+    series: [
+      {color:'#ec9332'},
+      {color:'#c44129'},
+      {color:'#0560bd'},
+      {color:'#D3D3D3', visibleInLegend: false},
+    ],
+    isStacked: 'percent',
+  };
+
+    var chart = new google.visualization.BarChart(
+      document.getElementById("class_drug")
+    );
+    chart.draw(data, options);
+}
