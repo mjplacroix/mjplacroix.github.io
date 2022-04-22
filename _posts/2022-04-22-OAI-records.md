@@ -74,7 +74,6 @@ Over 80% of API antiviral manufacturing sites that support US markets are locate
 
 Analgesics have the highest portion of DMFs sourced in the US at 25%.
 
-<div id="class_drug" style="width: 900px; height: 500px"></div>
 <div id="aggro" style="width: 900px; height: 500px"></div>
 <script
   type="text/javascript"
@@ -93,33 +92,32 @@ google.charts.load('current', {
 google.charts.setOnLoadCallback(loadAndDrawChart);
 google.charts.setOnLoadCallback(loadAndDrawChart2);
 
-function loadAndDrawChart() {
-  getJSON("../assets/geographic_class_analysis.json")
-  .then(drawChart)
-}
 function loadAndDrawChart2() {
   getJSON("../assets/class_antivirals.json")
   .then(drawChart2)
 }
 
 
-
-function drawChart(rawData) {
-  
+function drawChart2(rawData) {
   var data = google.visualization.arrayToDataTable([
-    ['therapeutic_class', {label: 'India', type: 'number'}, {label: 'China', type: 'number'}, {label: 'United States', type: 'number'}, {label: 'Other', type: 'number'}],
+    ['Region', 'India', 'China', 'Europe', 'United States', 'Other'],
     ...rawData.map(
-      ({therapeutic_class, India, China, US, Other}) => {
-        return [therapeutic_class, India, China, US, Other]
+      ({year, India, China, Europe, US, Other}) => {
+        return [year, India, China, Europe, US, Other]
       }
     )
   ]);
-  
   var options = {
-    title: "Geographic by therapeutic class",
+    title: "Geographic evolution of antiviral pharmaceutical manufacturing capacity",
     legend: { position: 'bottom', maxLines: 3 },
+    vAxis: {
+      minValue: 0,
+      ticks: [0, .25, .5, .75, 1],
+      title: 'Portion of new Type II currently active API DMFs by region', 
+      titleTextStyle: {italic: false}
+    },
     hAxis: {
-      title: 'Portion of Active Type II API DMFs', 
+      title: 'Year of DMF Submission', 
       titleTextStyle: {italic: false}
     },
     annotations: {
@@ -130,14 +128,16 @@ function drawChart(rawData) {
     series: [
       {color:'#ec9332'},
       {color:'#c44129'},
+      {color:'#3e8410'},
       {color:'#0560bd'},
       {color:'#D3D3D3', visibleInLegend: false},
     ],
     isStacked: 'percent',
   };
 
-    var chart = new google.visualization.BarChart(
-      document.getElementById("class_drug")
+    var chart = new google.visualization.AreaChart(
+      document.getElementById("aggro")
     );
     chart.draw(data, options);
 }
+</script>
