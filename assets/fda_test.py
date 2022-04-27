@@ -1,20 +1,17 @@
 import requests
-pload = {'username':'Olivia','password':'123'}
-r = requests.post('https://httpbin.org/post',data = pload)
-print(r.text)
 
 # defining the api-endpoint
-API_ENDPOINT = "https://api-datadashboard.fda.gov/v1/inspections_classifications"
+FDA_endpoint = "https://api-datadashboard.fda.gov/v1/inspections_classifications"
 
 # data to be sent to api
 data = {'Content-Type': "application/json",
         'Authorization-User': "michael.jp.lacrox@gmail.com",
         'Authorization-Key': "WIBEC7KSOAABYID"
-        }
+        }       
 
 json = """
 {
-    "start": 1,
+    "start": 4,
     "rows": 10,
     "sort": "LegalName",
     "sortorder": "ASC",
@@ -36,8 +33,9 @@ json = """
     ]
 }
         """
+
 # sending post request and saving response as response object
-r = requests.post(API_ENDPOINT, data = data, json=json)
+r = requests.post(FDA_endpoint, data=data, json=json)
 
 # extracting response text
 print(r.text) 
