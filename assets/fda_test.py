@@ -6,19 +6,21 @@ import json
 FDA_endpoint = "https://api-datadashboard.fda.gov/v1/inspections_classifications"      
 
 # data to be sent to api
-data = {'Content-Type': "application/json",
-        'Authorization-User': "michael.jp.lacroix@gmail.com",
-        'Authorization-Key': "WIBEC7KSOAABYID"
+header = {"Content-Type": "application/json",
+        "Authorization-User": "michael.jp.lacroix@gmail.com",
+        "Authorization-Key": "WIBEC7KSOAABYID"
         }       
 
-json = """
-{  "start" : 1,
-    "rows" : 10,
-    "sort" : "InspectionEndDate",
+data = """
+{
+    "start" : 1,
+    "rows":100,
+    "returntotalcount" : true,
+    "sort" : "FiscalYear",
     "sortorder" : "ASC",
     "filters" : {
-        "InspectionEndDateFrom":["2001-11-27"],
-        "InspectionEndDateTo":["2020-11-27"]
+            "Classification":["Voluntary Action"],
+            "InspectionEndDateFrom":["2018-11-27"]
     },
     "columns" : [
         "FEINumber",
@@ -30,14 +32,8 @@ json = """
 }
         """
 # sending post request and saving response as response object
-r = requests.post(FDA_endpoint, headers=data, json=json)
+r = requests.post(FDA_endpoint, headers=header, data=data)
 
 # extracting response text
-# print(r.text)
-
-# data = r.json()
-# print(data)
-
-json_data = json.loads(r.text)
-
-print(json_data)
+pretty_json = json.loads(r.text)
+print(json.dumps(pretty_json, indent=2))
