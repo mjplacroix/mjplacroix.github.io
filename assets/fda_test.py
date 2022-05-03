@@ -9,31 +9,35 @@ FDA_endpoint = "https://api-datadashboard.fda.gov/v1/inspections_classifications
 header = {"Content-Type": "application/json",
         "Authorization-User": "michael.jp.lacroix@gmail.com",
         "Authorization-Key": "WIBEC7KSOAABYID"
-        }       
+        }  
 
-data = """
-{
-    "start" : 1,
-    "rows":100,
-    "returntotalcount" : true,
-    "sort" : "FiscalYear",
-    "sortorder" : "ASC",
-    "filters" : {
-            "Classification":["Voluntary Action"],
-            "InspectionEndDateFrom":["2018-11-27"]
-    },
-    "columns" : [
-        "FEINumber",
-        "LegalName",
-        "InspectionID",
-        "Classification",
-        "InspectionEndDate"
-    ]
-}
-        """
-# sending post request and saving response as response object
-r = requests.post(FDA_endpoint, headers=header, data=data)
+for year in range(2009, 2014):
+        print(year)
 
-# extracting response text
-pretty_json = json.loads(r.text)
-print(json.dumps(pretty_json, indent=2))
+        data = """
+        {
+        "start" : 1, 
+        "rows":10,
+        "returntotalcount" : true,
+        "sort" : "FiscalYear",
+        "sortorder" : "ASC",
+        "filters" : {"FiscalYear":["{}"]},
+        "columns" : [
+                "Classification",
+                "FiscalYear"
+        ]
+        }
+                """
+
+        data.format(year)
+        # sending post request and saving response as response object
+        r = requests.post(FDA_endpoint, headers=header, data=data)
+
+        # extracting response text
+        pretty_json = json.loads(r.text)
+        # print(json.dumps(pretty_json, indent=2))
+
+        inspection_df = pd.DataFrame.from_dict(pretty_json)
+
+        print(inspection_df.shape)
+        print(inspection_df.head())
