@@ -14,29 +14,40 @@ header = {"Content-Type": "application/json",
 
 # specific data requested 
 data = """
-{
+{}
 "start" : 1, 
 "rows":10,
 "returntotalcount" : true,
 "sort" : "FiscalYear",
 "sortorder" : "ASC",
-"filters" : {"FiscalYear":["2018"]},
+"filters" : {}
+        "FiscalYear":["{}"],
+        "Classification":["{}"]
+        {},
 "columns" : [
         "Classification",
         "FiscalYear"
 ]
-}
+{}
         """
 
-# sending post request and saving response as response object
-r = requests.post(FDA_endpoint, headers=header, data=data)
+classifications = ['Voluntary Action', 'No Action', 'Official Action']
 
-# extracting response text
-pretty_json = json.loads(r.text)
-# print(json.dumps(pretty_json, indent=2))
+for year in range(2009, 2013):
+        for inspection in classifications:
+                print(year, inspection)
+                var = "{"
+                var2 = "}"
 
-inspection_df = pd.DataFrame.from_dict(pretty_json)
+                # sending post request and saving response as response object
+                r = requests.post(FDA_endpoint, headers=header, data=data.format(var, var, year, inspection, var2, var2))
 
-result = inspection_df['totalrecordcount'][0]
+                # extracting response text
+                pretty_json = json.loads(r.text)
+                # print(json.dumps(pretty_json, indent=2))
 
-print(result)
+                inspection_df = pd.DataFrame.from_dict(pretty_json)
+
+                result = inspection_df['totalrecordcount'][0]
+
+                print(result)

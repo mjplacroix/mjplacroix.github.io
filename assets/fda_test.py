@@ -3,47 +3,35 @@ import pandas as pd
 import json
 
 
-
-string_1 = """ 
-        {
-        multline line comment {} 
-        another one {}
-"""
-
-string_2 = string_1.format("2018", "2020")
-
-print(string_2)
-
-exit()
-
 data = """
-        {
-        "start": 1, 
-        "rows":10,
-        "returntotalcount" : true,
-        "sort" : "FiscalYear",
-        "sortorder" : "ASC",
-        "filters" : {},
-        "columns" : [
-                "Classification: {}",
-                "FiscalYear"
-        ]
-        }
-                """
-
-classifications = ['Voluntary Action Indicated (VAI)', 'No Action Indicated (NAI)', 'Official Action Indicated (OAI)']
+{}
+"start" : 1, 
+"rows":10,
+"returntotalcount" : true,
+"sort" : "FiscalYear",
+"sortorder" : "ASC",
+"filters" : {}
+        "FiscalYear":["{}"],
+        "Classification":["{}"]
+        {},
+"columns" : [
+        "Classification",
+        "FiscalYear"
+]
+{}
+        """
+classifications = ['Voluntary Action', 'No Action', 'Official Action']
 
 annual_inspections_df = pd.DataFrame()
 
 for year in range(2009, 2014):
         for num in range(0, 3):
-                current_year = f'"FiscalYear":"{year}"'
-                print(current_year)                
+                print(year)                
                 query = data.format(current_year, classifications[num])
                 print(query)
 
 
-exit()
+# exit()
 
 
 
@@ -90,21 +78,9 @@ def get_specific_data(year, classification):
         
         return result
 
-exit()
-
 # since FDA API is limited to 5000 data points per request, this is a
 # nested for loop iteratively requesting each piece of data needed to display
 # overall totalls
-
-
- 
-classifications = ['Voluntary Action Indicated (VAI)', 'No Action Indicated (NAI)', 'Official Action Indicated (OAI)']
-
-annual_inspections_df = pd.DataFrame()
-
-for year in range(2009, 2014):
-        for num in range(0, 3):                
-                result = get_specific_data(year, classifications[num])
 
 
 
