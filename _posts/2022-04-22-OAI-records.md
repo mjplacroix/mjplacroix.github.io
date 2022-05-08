@@ -282,7 +282,7 @@ function drawChart2(rawData) {
 
 Over 80% of API antiviral manufacturing sites that support US markets are located in India and China.
 
-<div id="inspections"></div>
+<div id="inspections_2"></div>
 
 <script>
 async function getJSON(filename) {
@@ -324,7 +324,7 @@ function drawChart(rawData) {
     },
   };
   var view = new google.visualization.DataView(data);
-  var chart = new google.visualization.ColumnChart(document.getElementById('inspections'));
+  var chart = new google.visualization.ColumnChart(document.getElementById('inspections_2'));
 
   chart.draw(view, options);
 }
