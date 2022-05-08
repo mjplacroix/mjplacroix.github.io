@@ -13,6 +13,8 @@ COVID has affected nearly every part of our lives - personal, work, and beyond. 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
+
 <script type="text/javascript">
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
@@ -34,6 +36,8 @@ COVID has affected nearly every part of our lives - personal, work, and beyond. 
       ['2021', 7689],
       ['2022', 3173]
     ]);
+
+
 
     var options = {
       title: 'Total Inspections',
@@ -313,7 +317,7 @@ function drawChart(rawData) {
     height: 400,
     // legend: { position: 'top', maxLines: 3 },
     // bar: { groupWidth: '75%' },
-    isStacked: true,
+    isStacked: percent,
     hAxis: { 
       format:'',
       showTextEvery: 1,
