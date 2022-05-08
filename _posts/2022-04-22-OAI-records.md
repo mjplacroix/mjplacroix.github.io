@@ -282,6 +282,8 @@ function drawChart2(rawData) {
 
 Over 80% of API antiviral manufacturing sites that support US markets are located in India and China.
 
+<div id="inspections"></div>
+
 <script>
 async function getJSON(filename) {
   const response = await fetch(filename)
