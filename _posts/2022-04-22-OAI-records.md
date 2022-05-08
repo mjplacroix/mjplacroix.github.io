@@ -211,10 +211,6 @@ Analgesics have the highest portion of DMFs sourced in the US at 25%.
 
 
 <div id="aggro" style="width: 900px; height: 500px"></div>
-<script
-  type="text/javascript"
-  src="https://www.gstatic.com/charts/loader.js"
-></script>
 
 <script>
 async function getJSON(filename) {
