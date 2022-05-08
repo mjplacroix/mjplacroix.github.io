@@ -9,6 +9,8 @@ tags: [data science, kedro]
 
 COVID has affected nearly every part of our lives - personal, work, and beyond. Despite the well known mailman's creed of "Neither snow nor rain nor heat nor gloom of night...", government was no expection to this. We can see this clearly in the collection of data on FDA inspections over the past decade. In the macro - we can see total inspections holding steady between roughly 20-25,0000 from 2010 to 2019. Then, to no one's surprise, we see a steep drop by over 50% in 2020 to 9,638 and still further in 2021 to 7,689. You can see this overall trend clearly below.
 
+<div id="line_chart" style="width: 900px; height: 500px"></div>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
@@ -39,7 +41,7 @@ COVID has affected nearly every part of our lives - personal, work, and beyond. 
       legend: { position: 'bottom' }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
 
     chart.draw(data, options);
   }
