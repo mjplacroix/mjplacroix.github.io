@@ -280,7 +280,7 @@ function drawChart2(rawData) {
 </script>
 
 
-# Testing a second chart
+# Testing a second chartt
 
 Over 80% of API antiviral manufacturing sites that support US markets are located in India and China.
 
