@@ -83,20 +83,19 @@ Analgesics have the highest portion of DMFs sourced in the US at 25%.
   src="https://www.gstatic.com/charts/loader.js"
 ></script>
 
+
+
 <script>
 async function getJSON(filename) {
   const response = await fetch(filename)
   return response.json()
 }
 
-google.charts.load('current', {
-  'packages': ['corechart']
-});
+google.charts.load('current', {'packages': ['corechart']});
 google.charts.setOnLoadCallback(loadAndDrawChart2);
 
 function loadAndDrawChart2() {
-  getJSON("../assets/class_antivirals.json")
-  .then(drawChart2)
+  getJSON("../assets/class_antivirals.json").then(drawChart2)
 }
 
 
@@ -109,32 +108,13 @@ function drawChart2(rawData) {
       }
     )
   ]);
+
+
+
+
   var options = {
     title: "Geographic evolution of antiviral pharmaceutical manufacturing capacity",
-    legend: { position: 'bottom', maxLines: 3 },
-    vAxis: {
-      minValue: 0,
-      ticks: [0, .25, .5, .75, 1],
-      title: 'Portion of new Type II currently active API DMFs by region', 
-      titleTextStyle: {italic: false}
-    },
-    hAxis: {
-      title: 'Year of DMF Submission', 
-      titleTextStyle: {italic: false}
-    },
-    annotations: {
-      textStyle: {
-        color: 'black',
-      },
-    },
-    series: [
-      {color:'#ec9332'},
-      {color:'#c44129'},
-      {color:'#3e8410'},
-      {color:'#0560bd'},
-      {color:'#D3D3D3', visibleInLegend: false},
-    ],
-    isStacked: 'percent',
+    legend: { position: 'bottom', maxLines: 3 }
   };
 
     var chart = new google.visualization.AreaChart(
