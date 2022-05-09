@@ -13,6 +13,54 @@ Increasing visibility to decrease risk. Applying Machine Learning to geographica
 
 Heat map of API facilities approved by US, EU, Japan, Korea and NZ. Each unit either a product-facility-approval country combination or lower level of resolution (depending on granularity of the data). Hoverable details for each country like XXX US DMFs, YYY EU CEPs etc. This is the money slide
 
+<div id="OAI_inspections"></div>
+
+<script>
+async function getJSON(filename) {
+  const response = await fetch(filename)
+  return response.json()
+}
+
+google.charts.load('current', {
+  'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(loadAndDrawChart);
+
+function loadAndDrawChart() {
+  getJSON("../assets/out_inspection.json")
+  .then(drawChart)
+}
+
+function drawChart(rawData) {
+  var data = google.visualization.arrayToDataTable([
+    ['Inspection Classification', 'OAI', 'VAI', 'NAI', { role: 'annotation' } ],
+    ...rawData.map(
+      ({year, NAI, OAI, VAI, oai_ratio}) => {
+        return [year, OAI, VAI, NAI, '']
+      }
+    )
+  ]);
+
+  var options = {
+    width: 600,
+    height: 400,
+    // legend: { position: 'top', maxLines: 3 },
+    // bar: { groupWidth: '75%' },
+    isStacked: 'percent',
+    hAxis: { 
+      format:'',
+      showTextEvery: 1,
+      slantedText: true,
+      slantedTextAngle: 9,
+    },
+  };
+  var view = new google.visualization.DataView(data);
+  var chart = new google.visualization.ColumnChart(document.getElementById('OAI_inspections'));
+
+  chart.draw(view, options);
+}
+</script>
+
 # India dominates in API registration filings to stringent regulatory authorities 
 
 
