@@ -35,7 +35,7 @@ classifications = ['Voluntary Action', 'No Action', 'Official Action']
 
 records_df = pd.DataFrame(columns=['year', 'VAI', 'NAI', 'OAI'])
 
-for year in range(2009, 2013):
+for year in range(2009, 2017):
         year_records = []
         year_records.append(year)
         print(year_records)
@@ -59,10 +59,14 @@ for year in range(2009, 2013):
 
                 if len(year_records) == 4:
                         print(year_records)
-                        records_df = records_df.append(year_records)
+                        records_df.loc[len(records_df)] = year_records
+                        # records_df = pd.concat([records_df, year_records])
                         print(records_df)
 
 
 
 
-print(records_df.head())
+print(records_df)
+
+data = records_df.to_json('./inspections.json', orient='index')
+print(data)
