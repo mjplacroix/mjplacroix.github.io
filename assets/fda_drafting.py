@@ -35,7 +35,7 @@ classifications = ['Voluntary Action', 'No Action', 'Official Action']
 
 records_df = pd.DataFrame(columns=['year', 'VAI', 'NAI', 'OAI'])
 
-for year in range(2009, 2017):
+for year in range(2009, 2022):
         year_records = []
         year_records.append(year)
         print(year_records)
@@ -68,5 +68,8 @@ for year in range(2009, 2017):
 
 print(records_df)
 
-data = records_df.to_json('./inspections.json', orient='index')
-print(data)
+
+data = records_df.to_csv('inspections.csv')
+
+
+# data = records_df.to_json('./inspections.json', orient='index')
