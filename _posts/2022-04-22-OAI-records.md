@@ -250,7 +250,7 @@ google.charts.load('current', {
 google.charts.setOnLoadCallback(loadAndDrawChart);
 
 function loadAndDrawChart() {
-  getJSON("../assets/out_inspection.json")
+  getJSON("../assets/out_inspection_full.json")
   .then(drawChart)
 }
 
