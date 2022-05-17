@@ -1,3 +1,8 @@
+"""
+This is a boilerplate pipeline 'data_processing'
+generated using Kedro 0.17.7
+"""
+
 import requests
 import pandas as pd
 import json
@@ -5,6 +10,13 @@ import json
 
 # defining the api-endpoint
 FDA_endpoint = "https://api-datadashboard.fda.gov/v1/inspections_classifications"    
+
+"""
+above link should be your pipeline input
+below is function
+not sure if I need an output - try a dummie?
+name appears to be for tagging purposes
+"""
 
 
 def request_data(api):
@@ -85,3 +97,4 @@ def convert_csv_to_json(csv):
                 json.dump(parsed, f)
 
 convert_csv_to_json('inspections.csv')
+
