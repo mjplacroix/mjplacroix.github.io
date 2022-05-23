@@ -105,49 +105,49 @@ function drawChart(rawData) {
 
 It will be interesting to see where it goes from here as the sheer overall number of inspections has started to pick up again. We're only nearing the end of Q1 and already approaching 50% of the inspections for 2021. In fact, if we zoom in again on month-by-month inspection totals from the last 2 years, we can clearly see the number of overall inspections increasing. Which, thankfully, seems to be another indication that we're trending towards a return to normalcy.
 
-*NOTE:* Why data only shows through 2021 - we're using fiscal year as a proxy since the date of completion is actually a lagging indicator
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {packages: ['corechart', 'bar']});
 
-  // Load the Visualization API and the corechart package.
-  google.charts.load('current', {packages: ['corechart', 'bar']});
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawColColors);
 
-  // Set a callback to run when the Google Visualization API is loaded.
-  google.charts.setOnLoadCallback(drawColColors);
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawColColors() {
+  var data = google.visualization.arrayToDataTable([
+    ['Year', 'OAI percent'],
+  ['2009', 3.98340720536424],
+    ['2010', 4.10837942092299],
+    ['2011', 4.59806190905881],
+    ['2012', 4.58545249051424],
+    ['2013', 5.2687723203933],
+  ['2014', 4.8625379121416605],
+  ['2015', 4.94938132733408],
+  ['2016', 3.6375916634504],
+  ['2017', 3.3140283140283096],
+  ['2018', 2.3391812865497],
+  ['2019', 2.92927741076458],
+  ['2020', 3.08187195185223],
+  ['2021', 3.6675770581349902],
+  ['2022', 0.94547746612039]
+]);
 
-  // Callback that creates and populates a data table, instantiates the chart, passes in the data and draws it.
-  function drawColColors() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'OAI percent'],
-    ['2009', 3.98340720536424],
-      ['2010', 4.10837942092299],
-      ['2011', 4.59806190905881],
-      ['2012', 4.58545249051424],
-      ['2013', 5.2687723203933],
-    ['2014', 4.8625379121416605],
-    ['2015', 4.94938132733408],
-    ['2016', 3.6375916634504],
-    ['2017', 3.3140283140283096],
-    ['2018', 2.3391812865497],
-    ['2019', 2.92927741076458],
-    ['2020', 3.08187195185223],
-    ['2021', 3.6675770581349902],
-    ['2022', 0.94547746612039]
-  ]);
-
-  var options = {
-    width: 600,
-    height: 400,
-    legend: { position: 'top', maxLines: 3 },
-    bar: { groupWidth: '75%' },
-    // isStacked: true,
-  };
-
-    // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-  }
+var options = {
+  width: 600,
+  height: 400,
+  legend: { position: 'top', maxLines: 3 },
+  bar: { groupWidth: '75%' },
+};
+      // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+}
   
 </script>
+
+*NOTE:* Why data only shows through 2021 - we're using fiscal year as a proxy since the date of completion is actually a lagging indicator
