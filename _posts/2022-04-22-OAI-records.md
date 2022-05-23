@@ -15,26 +15,27 @@ COVID has affected nearly every part of our lives - personal, work, and beyond. 
 
 
 <script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Fiscal Year', 'Total Number'],
-      ['2010', 21517],
-      ['2011', 25489],
-      ['2012', 24774],
-      ['2013', 21561],
-      ['2014', 20442],
-      ['2015', 20447],
-      ['2016', 20728],
-      ['2017', 21756],
-      ['2018', 21546],
-      ['2019', 19527],
-      ['2020', 9637],
-      ['2021', 7689],
-      ['2022', 3173]
-    ]);
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Fiscal Year', 'Total Number'],
+    ['2010', 21517],
+    ['2011', 25489],
+    ['2012', 24774],
+    ['2013', 21561],
+    ['2014', 20442],
+    ['2015', 20447],
+    ['2016', 20728],
+    ['2017', 21756],
+    ['2018', 21546],
+    ['2019', 19527],
+    ['2020', 9637],
+    ['2021', 7689],
+    ['2022', 3173]
+  ]);
 
 
 
@@ -105,7 +106,7 @@ function drawChart(rawData) {
 
 It will be interesting to see where it goes from here as the sheer overall number of inspections has started to pick up again. We're only nearing the end of Q1 and already approaching 50% of the inspections for 2021. In fact, if we zoom in again on month-by-month inspection totals from the last 2 years, we can clearly see the number of overall inspections increasing. Which, thankfully, seems to be another indication that we're trending towards a return to normalcy.
 
-
+<div id="bar_chart" style="width: 900px; height: 500px"></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
@@ -144,7 +145,7 @@ var options = {
   bar: { groupWidth: '75%' },
 };
       // Instantiate and draw our chart, passing in some options.
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('bar_chart'));
     chart.draw(data, options);
 }
   
