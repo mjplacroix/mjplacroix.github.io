@@ -38,7 +38,7 @@ def request_data(api):
 
         records_df = pd.DataFrame(columns=['year', 'VAI', 'NAI', 'OAI'])
 
-        for year in range(2009, 2013):
+        for year in range(2009, 2022):
                 year_records = []
                 year_records.append(year)
                 print(year_records)
