@@ -7,59 +7,12 @@ header-img: "img/cover.jpeg"
 ---
 Increasing visibility to decrease risk. Applying Machine Learning to geographically assess global API manufacturing.
 
-<!--more-->
-# Global API manufacturing capacity is concentrated in India​ (the money slide)
+# Global API manufacturing capacity is concentrated in India​ 
 
+Heat map of API facilities approved by US, EU, Japan, Korea and NZ. Each unit either a product-facility-approval country combination or lower level of resolution (depending on granularity of the data). Hoverable details for each country like XXX US DMFs, YYY EU CEPs etc. 
 
-Heat map of API facilities approved by US, EU, Japan, Korea and NZ. Each unit either a product-facility-approval country combination or lower level of resolution (depending on granularity of the data). Hoverable details for each country like XXX US DMFs, YYY EU CEPs etc. This is the money slide
+Below are different angles the rest of this post could take. 
 
-<div id="OAI_inspections"></div>
-
-<script>
-async function getJSON(filename) {
-  const response = await fetch(filename)
-  return response.json()
-}
-
-google.charts.load('current', {
-  'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(loadAndDrawChart);
-
-function loadAndDrawChart() {
-  getJSON("../assets/out_inspection.json")
-  .then(drawChart)
-}
-
-function drawChart(rawData) {
-  var data = google.visualization.arrayToDataTable([
-    ['Inspection Classification', 'OAI', 'VAI', 'NAI', { role: 'annotation' } ],
-    ...rawData.map(
-      ({year, NAI, OAI, VAI, oai_ratio}) => {
-        return [year, OAI, VAI, NAI, '']
-      }
-    )
-  ]);
-
-  var options = {
-    width: 600,
-    height: 400,
-    // legend: { position: 'top', maxLines: 3 },
-    // bar: { groupWidth: '75%' },
-    isStacked: 'percent',
-    hAxis: { 
-      format:'',
-      showTextEvery: 1,
-      slantedText: true,
-      slantedTextAngle: 9,
-    },
-  };
-  var view = new google.visualization.DataView(data);
-  var chart = new google.visualization.ColumnChart(document.getElementById('OAI_inspections'));
-
-  chart.draw(view, options);
-}
-</script>
 
 # India dominates in API registration filings to stringent regulatory authorities 
 
@@ -68,51 +21,7 @@ function drawChart(rawData) {
 
 
 # US API registrations from European and the US manufacturers have declined over time
-<div id="dmf_area2" style="width: 900px; height: 500px"></div>
 
-# EU API registrations from European and the US manufacturers have declined over time
-
-<script
-  type="text/javascript"
-  src="https://www.gstatic.com/charts/loader.js"
-></script>
-
-<script>
-async function getJSON(filename) {
-  const response = await fetch(filename)
-  return response.json()
-}
-
-google.charts.load('current', {
-  'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(loadAndDrawChart);
-
-function loadAndDrawChart() {
-  getJSON("../assets/out_dmf_yearly_active.json")
-  .then(drawChart)
-}
-
-function drawChart(rawData) {
-  var data = google.visualization.arrayToDataTable([
-    ['Region', 'India', 'China', 'Europe', 'United States', 'Other',  { role: 'annotation' }],
-    ...rawData.map(
-      ({year, India, China, Europe, US, Other, total}) => {
-        return [year, India, China, Europe, US, Other, total]
-      }
-    )
-  ]);
-  var options = {
-    title: "Geographic evolution of new pharmaceutical manufacturing capacity",
-    legend: { position: 'bottom', maxLines: 3 }
-  };
-
-    var chart = new google.visualization.AreaChart(
-      document.getElementById("dmf_area2")
-    );
-    chart.draw(data, options);
-}
-</script>
 
 # Methodology
 
@@ -125,52 +34,6 @@ Over 80% of API antiviral manufacturing sites that support US markets are locate
 Analgesics have the highest portion of DMFs sourced in the US at 25%.
 
 
-<div id="aggro" style="width: 900px; height: 500px"></div>
-<script
-  type="text/javascript"
-  src="https://www.gstatic.com/charts/loader.js"
-></script>
-
-
-
-<script>
-async function getJSON(filename) {
-  const response = await fetch(filename)
-  return response.json()
-}
-
-google.charts.load('current', {'packages': ['corechart']});
-google.charts.setOnLoadCallback(loadAndDrawChart2);
-
-function loadAndDrawChart2() {
-  getJSON("../assets/class_antivirals.json").then(drawChart2)
-}
-
-
-function drawChart2(rawData) {
-  var data = google.visualization.arrayToDataTable([
-    ['Region', 'India', 'China', 'Europe', 'United States', 'Other'],
-    ...rawData.map(
-      ({year, India, China, Europe, US, Other}) => {
-        return [year, India, China, Europe, US, Other]
-      }
-    )
-  ]);
-
-
-
-
-  var options = {
-    title: "Geographic evolution of antiviral pharmaceutical manufacturing capacity",
-    legend: { position: 'bottom', maxLines: 3 }
-  };
-
-    var chart = new google.visualization.AreaChart(
-      document.getElementById("aggro")
-    );
-    chart.draw(data, options);
-}
-</script>
 
 # Additional research ideas:
 
